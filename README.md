@@ -1,8 +1,46 @@
 # THIS VERSION OF FPDM HAS BEEN PATCHED SO CHECKBOXES WORK, SINCE CODESHELL REFUSES TO ACCEPT PRs
 
+## Just make sure you don't have any alt text on your fields like so (or your checkboxes will come out blank)
+
+if you dump pdf form data with pdftk (google it) and see any records like this:
+```FieldType: Button
+FieldName: Agree24Hours
+FieldNameAlt: I agree to prov
+FieldFlags: 0
+FieldValue: Off
+FieldJustification: Left
+FieldStateOption: Off
+FieldStateOption: Yes
+```
+open the form in acrobat and right click -> properties -> clear the tooltip field and try it again.
+
+while you're here, fix the dumb chrome bug (blank boxes) by adding styling to the checkboxes (just a background and a filler shape should be fine!)
+
+then uncompress the file with pdftk, and then run the dump fields again:
+```FieldType: Button
+FieldName: Agree24Hours
+FieldFlags: 0
+FieldValue: Off
+FieldJustification: Left
+FieldStateOption: Off
+FieldStateOption: Yes
+```
+
+you should be good to go!
+
+
+
+
 i'm going to leave everything else here the same; props to oliver and codeshell for the good work, this library is great... just realllly need check boxes
 
 todo: radio/image support properly, probably within the coming months we'll see how uni goes
+
+
+
+
+
+
+
 
 # PDF Form Filling with FPDM
 
